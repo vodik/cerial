@@ -147,28 +147,28 @@ cdef class Struct:
             key = key.encode()
             if field == 'uint8':
                 self.offsets[key] = formatdef(offset=offset,
-                                              pack=pack_uint8,
-                                              unpack=unpack_uint8)
+                                              pack=&pack_uint8,
+                                              unpack=&unpack_uint8)
                 offset += sizeof(uint8_t)
             elif field == 'uint16':
                 if endianness == '<':
                     self.offsets[key] = formatdef(offset=offset,
-                                                  pack=pack_uint16_le,
-                                                  unpack=unpack_uint16_le)
+                                                  pack=&pack_uint16_le,
+                                                  unpack=&unpack_uint16_le)
                 else:
                     self.offsets[key] = formatdef(offset=offset,
-                                                  pack=pack_uint16_be,
-                                                  unpack=unpack_uint16_be)
+                                                  pack=&pack_uint16_be,
+                                                  unpack=&unpack_uint16_be)
                 offset += sizeof(uint16_t)
             elif field == 'uint32':
                 if endianness == '<':
                     self.offsets[key] = formatdef(offset=offset,
-                                                  pack=pack_uint32_le,
-                                                  unpack=unpack_uint32_le)
+                                                  pack=&pack_uint32_le,
+                                                  unpack=&unpack_uint32_le)
                 else:
                     self.offsets[key] = formatdef(offset=offset,
-                                                  pack=pack_uint32_be,
-                                                  unpack=unpack_uint32_be)
+                                                  pack=&pack_uint32_be,
+                                                  unpack=&unpack_uint32_be)
                 offset += sizeof(uint32_t)
 
         self.length = offset
